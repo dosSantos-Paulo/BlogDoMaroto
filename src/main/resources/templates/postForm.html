@@ -46,7 +46,10 @@
 
     <div>
         <form method="post"
-              style="width: 60%; padding-botton: 30px; margin-top: 30px; margin-left: auto; margin-right: auto;">
+              style="width: 60%; padding-bottom: 30px; margin-top: 30px; margin-left: auto; margin-right: auto;">
+
+            <th:block th:include="mensagemValidacao"></th:block>
+
             <div class="form-group" style="margin-top: 10px;">
                 <input type="text" class="form-control" name="titulo" placeholder="Título *">
             </div>
