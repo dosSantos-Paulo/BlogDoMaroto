@@ -13,6 +13,8 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
           crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -29,48 +31,43 @@
 
 </header>
 
-<section>
+<main>
 
     <div class="container" style="width: 60%; padding-botton: 30px; margin-top: 30px;">
 
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">DashBoard</a></li>
+                <li class="breadcrumb-item"><a href="/posts">DashBoard</a></li>
+                <li class="breadcrumb-item active">Artigo Completo</li>
             </ol>
         </nav>
 
-        <div class="card" th:each="post : ${posts}" style="margin-top: 30px;">
+        <div class="card w-75" style="width: 100%; padding: 50px;">
 
-            <div class="card-header">
-                <h3 class="card-title">
+            <article>
+                <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;">
                     <span th:text="${post.titulo}"></span>
-                </h3>
-            </div>
+                </h1>
 
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>
-                        <span th:utext="${#strings.abbreviate(post.texto, 200)}"></span>
+                <p class="card-subtitle mb-2 text-muted">
+                    <i class="material-icons">person_outline</i>
+                    <span th:text="${post.autor}"></span>
+                    <br>
+                    <i class="material-icons">date_range</i>
+                    <span th:text="${post.data}"></span>
+                </p>
+                <section>
+                    <p class="card-text" style="margin-top: 40px;">
+                        <span th:utext="${post.texto}"></span>
                     </p>
-                    <footer class="blockquote-footer">
-                        <span th:text="${post.autor}"></span> :
-                        <cite title="Source Title">
-                            <span th:text="${post.data}"></span>
-                        </cite>
+                </section>
+            </article>
 
-                        <div style="text-align: right;">
-                            <a th:href="${(#mvc.url('BC#getPostDetails').arg(0, post.id)).build()}" class="btn btn-primary" style="margin-top: 10px; margin-left: 30px;">
-                                Artigo Completo
-                            </a>
-                        </div>
-                    </footer>
-                </blockquote>
-
-            </div>
         </div>
+
     </div>
 
-</section>
+</main>
 
 </body>
 </html>
